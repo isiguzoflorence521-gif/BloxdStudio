@@ -3,50 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloxdStudio | Pro Editor</title>
+    <title>BloxdStudio | Neo Editor</title>
     <link rel="stylesheet" href="css/main.css">
+    <!-- Google Fonts for Neo Look -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
 </head>
-<body>
-    <div id="editor-layout">
-        <!-- 🎨 Sidebar: Assets & Tools -->
-        <aside id="sidebar">
+<body class="neo-theme">
+    <div id="app-container">
+        <!-- 🌌 Sidebar: Floating Neon Glass -->
+        <aside id="sidebar" class="glass-panel">
             <header class="sidebar-header">
-                <h1>BloxdStudio</h1>
-                <div class="search-box">
-                    <input type="text" id="texture-search" placeholder="Search 1,709 textures...">
+                <div class="logo-wrapper">
+                    <span class="neon-dot"></span>
+                    <h1 class="neo-text">BloxdStudio</h1>
+                </div>
+                <div class="search-wrapper">
+                    <i class="search-icon"></i>
+                    <input type="text" id="texture-search" placeholder="Search 1,709 assets..." autocomplete="off">
                 </div>
             </header>
 
-            <!-- 📁 Category Tabs -->
-            <nav class="category-tabs">
-                <button class="tab-btn active" data-category="all">All</button>
-                <button class="tab-btn" data-category="natural">Natural</button>
-                <button class="tab-btn" data-category="ores">Ores</button>
-                <button class="tab-btn" data-category="items">Items</button>
+            <nav class="neo-tabs">
+                <button class="tab-item active" data-cat="all">All</button>
+                <button class="tab-item" data-cat="natural">Natural</button>
+                <button class="tab-item" data-cat="ores">Ores</button>
+                <button class="tab-item" data-cat="ui">UI</button>
             </nav>
 
-            <!-- 🧱 The 1,709 Texture Grid -->
-            <div id="block-palette" class="custom-scroll">
-                <!-- JavaScript injects 1,709 .block-item divs here -->
+            <div id="block-palette" class="neo-scroll">
+                <!-- 1,709 textures injected here -->
             </div>
 
-            <!-- ⚙️ Editor Controls -->
             <footer class="sidebar-footer">
-                <div class="tool-grid">
-                    <button id="btn-place" title="Build Mode">🧱 Build</button>
-                    <button id="btn-delete" title="Erase Mode">🧹 Erase</button>
+                <div class="action-row">
+                    <button id="btn-place" class="neo-btn btn-glow">🧱 Build</button>
+                    <button id="btn-delete" class="neo-btn">🧹 Erase</button>
                 </div>
-                <button id="btn-export" class="primary-btn">Export .bloxdschem</button>
+                <button id="btn-export" class="neo-btn primary-neo">Export .bloxdschem</button>
             </footer>
         </aside>
 
-        <!-- 🌐 3D Viewport -->
+        <!-- 🎥 3D Viewport -->
         <main id="viewport-container">
-            <div id="coordinate-info">X: 0 | Y: 0 | Z: 0</div>
+            <div id="neo-hud">
+                <div class="hud-stat">FPS: <span id="fps-val">60</span></div>
+                <div class="hud-stat">POS: <span id="pos-val">0, 0, 0</span></div>
+            </div>
+            <canvas id="render-canvas"></canvas>
         </main>
     </div>
 
-    <!-- 📦 Dependencies & Logic -->
     <script type="importmap">
         { "imports": { "three": "https://unpkg.com" } }
     </script>
