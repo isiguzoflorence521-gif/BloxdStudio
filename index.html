@@ -3,33 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloxdStudio | Unofficial Developer Tool</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BloxdStudio | Pro Editor</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div id="editor-container">
-        <!-- Sidebar for Tools -->
+    <div id="editor-layout">
+        <!-- 🎨 Sidebar: Assets & Tools -->
         <aside id="sidebar">
-            <h2>🎨 BloxdStudio</h2>
-            <div class="tool-section">
-                <h3>Blocks</h3>
-                <button onclick="setTool('place')">Place Block</button>
-                <button onclick="setTool('erase')">Erase</button>
+            <header class="sidebar-header">
+                <h1>BloxdStudio</h1>
+                <div class="search-box">
+                    <input type="text" id="texture-search" placeholder="Search 1,709 textures...">
+                </div>
+            </header>
+
+            <!-- 📁 Category Tabs -->
+            <nav class="category-tabs">
+                <button class="tab-btn active" data-category="all">All</button>
+                <button class="tab-btn" data-category="natural">Natural</button>
+                <button class="tab-btn" data-category="ores">Ores</button>
+                <button class="tab-btn" data-category="items">Items</button>
+            </nav>
+
+            <!-- 🧱 The 1,709 Texture Grid -->
+            <div id="block-palette" class="custom-scroll">
+                <!-- JavaScript injects 1,709 .block-item divs here -->
             </div>
-            <div class="tool-section">
-                <h3>File</h3>
-                <button onclick="exportSchematic()">Export .bloxdschem</button>
-            </div>
+
+            <!-- ⚙️ Editor Controls -->
+            <footer class="sidebar-footer">
+                <div class="tool-grid">
+                    <button id="btn-place" title="Build Mode">🧱 Build</button>
+                    <button id="btn-delete" title="Erase Mode">🧹 Erase</button>
+                </div>
+                <button id="btn-export" class="primary-btn">Export .bloxdschem</button>
+            </footer>
         </aside>
-        
-        <!-- 3D Viewport -->
-        <main id="viewport"></main>
+
+        <!-- 🌐 3D Viewport -->
+        <main id="viewport-container">
+            <div id="coordinate-info">X: 0 | Y: 0 | Z: 0</div>
+        </main>
     </div>
 
-    <!-- Load Three.js from CDN -->
+    <!-- 📦 Dependencies & Logic -->
     <script type="importmap">
-      { "imports": { "three": "https://unpkg.com" } }
+        { "imports": { "three": "https://unpkg.com" } }
     </script>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
