@@ -1,0 +1,5 @@
+body { margin: 0; background: #111; color: white; font-family: sans-serif; }
+#editor { display: flex; height: 100vh; }
+#sidebar { width: 250px; background: #222; padding: 20px; border-right: 1px solid #444; }
+#viewport { flex-grow: 1; }
+button { width: 100%; padding: 10px; margin-top: 10px; cursor: pointer; }
