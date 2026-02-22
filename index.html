@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloxdStudio | Unofficial Developer Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="editor-container">
+        <!-- Sidebar for Tools -->
+        <aside id="sidebar">
+            <h2>🎨 BloxdStudio</h2>
+            <div class="tool-section">
+                <h3>Blocks</h3>
+                <button onclick="setTool('place')">Place Block</button>
+                <button onclick="setTool('erase')">Erase</button>
+            </div>
+            <div class="tool-section">
+                <h3>File</h3>
+                <button onclick="exportSchematic()">Export .bloxdschem</button>
+            </div>
+        </aside>
+        
+        <!-- 3D Viewport -->
+        <main id="viewport"></main>
+    </div>
+
+    <!-- Load Three.js from CDN -->
+    <script type="importmap">
+      { "imports": { "three": "https://unpkg.com" } }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
