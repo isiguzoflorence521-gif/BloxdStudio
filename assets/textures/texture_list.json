@@ -1,0 +1,15 @@
+{
+  "metadata": { "total": 1709, "engine": "BloxdStudio-v1" },
+  "blocks": [
+    { "id": "bedrock", "name": "Bedrock", "src": "bedrock_render.png", "tool": "None", "tags": ["natural", "unbreakable"] },
+    { "id": "grass_block", "name": "Grass Block", "src": "grass_block_render.png", "tool": "Spade", "tags": ["natural", "surface"] },
+    { "id": "stone", "name": "Stone", "src": "stone_render.png", "tool": "Pickaxe", "tags": ["natural", "underground"] },
+    { "id": "coal_ore", "name": "Coal Ore", "src": "coal_ore.png", "tool": "Pickaxe", "tags": ["ore", "underground"] },
+    { "id": "iron_ore", "name": "Iron Ore", "src": "iron_ore.png", "tool": "Pickaxe", "tags": ["ore", "underground"] }
+    /* ... 1,704 more entries ... */
+  ],
+  "items": [
+    { "id": "apple", "name": "Apple", "src": "apple.png", "tags": ["food"] }
+    /* ... additional sprites ... */
+  ]
+}
