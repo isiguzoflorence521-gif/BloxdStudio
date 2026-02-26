@@ -1,61 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloxdStudio | Neo Editor</title>
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Google Fonts for Neo Look -->
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BloxdStudio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1c, #27272b);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #00d9ff;
+        }
+
+        p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 12px;
+            background: #00d9ff;
+            color: #000;
+            font-weight: 700;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #00b5d4;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            margin-top: 25px;
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-<body class="neo-theme">
-    <div id="app-container">
-        <!-- 🌌 Sidebar: Floating Neon Glass -->
-        <aside id="sidebar" class="glass-panel">
-            <header class="sidebar-header">
-                <div class="logo-wrapper">
-                    <span class="neon-dot"></span>
-                    <h1 class="neo-text">BloxdStudio</h1>
-                </div>
-                <div class="search-wrapper">
-                    <i class="search-icon"></i>
-                    <input type="text" id="texture-search" placeholder="Search 1,709 assets..." autocomplete="off">
-                </div>
-            </header>
 
-            <nav class="neo-tabs">
-                <button class="tab-item active" data-cat="all">All</button>
-                <button class="tab-item" data-cat="natural">Natural</button>
-                <button class="tab-item" data-cat="ores">Ores</button>
-                <button class="tab-item" data-cat="ui">UI</button>
-            </nav>
+<body>
+    <div class="container">
+        <h1>BloxdStudio</h1>
+        <p>Create worlds, textures, maps, and schematics with a modern tool built for speed.</p>
 
-            <div id="block-palette" class="neo-scroll">
-                <!-- 1,709 textures injected here -->
-            </div>
+        <button class="btn" onclick="enterStudio()">Launch Studio</button>
 
-            <footer class="sidebar-footer">
-                <div class="action-row">
-                    <button id="btn-place" class="neo-btn btn-glow">🧱 Build</button>
-                    <button id="btn-delete" class="neo-btn">🧹 Erase</button>
-                </div>
-                <button id="btn-export" class="neo-btn primary-neo">Export .bloxdschem</button>
-            </footer>
-        </aside>
-
-        <!-- 🎥 3D Viewport -->
-        <main id="viewport-container">
-            <div id="neo-hud">
-                <div class="hud-stat">FPS: <span id="fps-val">60</span></div>
-                <div class="hud-stat">POS: <span id="pos-val">0, 0, 0</span></div>
-            </div>
-            <canvas id="render-canvas"></canvas>
-        </main>
+        <footer>
+            © <span id="year"></span> BloxdStudio — All rights reserved.
+        </footer>
     </div>
 
-    <script type="importmap">
-        { "imports": { "three": "https://unpkg.com" } }
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function enterStudio() {
+            // redirect to your main app
+            window.location.href = "app.html";
+        }
     </script>
-    <script type="module" src="src/main.js"></script>
 </body>
 </html>
