@@ -1,0 +1,16 @@
+cd installers
+
+# SHA256 + SHA512 sidecar files
+shasum -a 256 * > checksums.sha256
+shasum -a 512 * > checksums.sha512
+
+# Combined checksums.txt in "ALG (file) = hash" format
+{
+  for f in *; do
+    [ -f "$f" ] || continue
+    sha256=$(shasum -a 256 "$f" | awk '{print $1}')
+    sha512=$(shasum -a 512 "$f" | awk '{print $1}')
+    printf "SHA256 (%s) = %s\n" "$f" "$sha256"
+    printf "SHA512 (%s) = %s\n" "$f" "$sha512"
+  done
+} > checksums.txt
