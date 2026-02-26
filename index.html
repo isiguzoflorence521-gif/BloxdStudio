@@ -1,104 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BloxdStudio</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Inter", sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #1a1a1c, #27272b);
-            color: white;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 900px;
-            padding: 40px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-            animation: fadeIn 0.8s ease;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #00d9ff;
-        }
-
-        p {
-            opacity: 0.8;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 12px;
-            background: #00d9ff;
-            color: #000;
-            font-weight: 700;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn:hover {
-            background: #00b5d4;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        footer {
-            margin-top: 25px;
-            opacity: 0.5;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BloxdStudio • Download & Install</title>
+  <meta name="description" content="Download BloxdStudio for Windows, macOS, and Linux. Installation instructions, checksums, and release notes." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#121821; --muted:#77839a; --text:#e6edf3; --brand:#4aa3ff; --brand-2:#3bd3c8; --ok:#2ecc71; --warn:#f1c40f; --bad:#e74c3c;
+      --border:#223046; --code:#0f141b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;line-height:1.5}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{padding:32px 16px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(74,163,255,.09),rgba(59,211,200,.05) 30%, transparent)}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+    .title{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:42px;height:42px;border-radius:10px;background:
+      radial-gradient(120% 120% at 0% 0%, var(--brand) 0%, transparent 60%),
+      radial-gradient(120% 120% at 100% 100%, var(--brand-2) 0%, transparent 60%),
+      #0d1320;
+      border:1px solid var(--border);
+      box-shadow:0 8px 24px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+    h1{font-size:28px;margin:0}
+    .subtitle{color:var(--muted);margin-top:6px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:28px 0}
+    .card{grid-column:span 12;background:var(--card);padding:18px;border:1px solid var(--border);border-radius:14px}
+    @media(min-width:880px){
+      .card.span-6{grid-column:span 6}
+      .card.span-5{grid-column:span 5}
+      .card.span-7{grid-column:span 7}
+      .card.span-4{grid-column:span 4}
+      .card.span-8{grid-column:span 8}
+    }
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#0e1522;border-radius:999px;padding:8px 12px;font-weight:600}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#0d1420;color:var(--text);
+      transition:.15s transform ease, .15s box-shadow ease;
+      font-weight:600
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .btn.primary{background:linear-gradient(180deg, rgba(74,163,255,.18), rgba(74,163,255,.08)); border-color:#2a3952}
+    .btn.success{background:linear-gradient(180deg, rgba(59,211,200,.18), rgba(59,211,200,.08)); border-color:#214b4a}
+    .btn.ghost{background:transparent}
+    .btn small{opacity:.85;font-weight:500}
+    .os-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .os{font-size:12px;padding:4px 8px;border-radius:8px;border:1px solid var(--border);background:#0f1624;color:var(--muted)}
+    .os.active{color:#d7f3ff;border-color:#3a5a86;background:#0f1d34}
+    .muted{color:var(--muted)}
+    code, pre{background:var(--code);border:1px solid var(--border);border-radius:10px}
+    code{padding:2px 6px}
+    pre{padding:14px;overflow:auto}
+    .list{margin:0;padding-left:18px}
+    .hr{height:1px;background:var(--border);margin:18px 0}
+    .k{color:#9adfff}
+    .checks{display:flex;flex-direction:column;gap:10px}
+    .note{font-size:13px;color:var(--muted)}
+    footer{border-top:1px solid var(--border);padding:22px 16px;color:var(--muted);text-align:center}
+    .monos{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .hide{display:none}
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>BloxdStudio</h1>
-        <p>Create worlds, textures, maps, and schematics with a modern tool built for speed.</p>
-
-        <button class="btn" onclick="enterStudio()">Launch Studio</button>
-
-        <footer>
-            © <span id="year"></span> BloxdStudio — All rights reserved.
-        </footer>
+  <header>
+    <div class="wrap">
+      <div class="title">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>BloxdStudio</h1>
+          <div class="subtitle">Download & Install — pick your platform or let us detect it automatically.</div>
+        </div>
+      </div>
+      <div class="os-badges" id="osBadges" aria-live="polite">
+        <span class="os" data-os="windows">Windows</span>
+        <span class="os" data-os="mac">macOS</span>
+        <span class="os" data-os="linux">Linux</span>
+      </div>
     </div>
+  </header>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
+  <main class="wrap">
+    <section class="grid">
 
-        function enterStudio() {
-            // redirect to your main app
-            window.location.href = "app.html";
+      <!-- Primary Download -->
+      <div class="card span-7" id="smartCard">
+        <h2>Recommended download</h2>
+        <p class="muted" id="smartText">We detected your OS. Click the button below to get the correct installer.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <a id="smartBtn" class="btn primary" href="#" download>
+            <span id="smartBtnLabel">Download</span>
+          </a>
+          <a class="btn ghost" href="#all-downloads">See all downloads</a>
+        </div>
+        <div class="hr"></div>
+        <div class="checks">
+          <div><strong>Version:</strong> <span id="version">v0.1.0</span></div>
+          <div><strong>Release date:</strong> <span id="released">2026‑02‑24</span></div>
+          <div><strong>SHA256:</strong> <code id="sha">loading…</code> <span class="note">Verify integrity after download.</span></div>
+        </div>
+      </div>
+
+      <!-- Quick Start -->
+      <div class="card span-5">
+        <h2>Quick start</h2>
+        <ol class="list">
+          <li><strong>Download</strong> your platform installer.</li>
+          <li><strong>Run the installer</strong> and follow prompts.</li>
+          <li>Open <span class="monos">BloxdStudio</span> and load a sample project.</li>
+        </ol>
+        <div class="hr"></div>
+        <p class="note">CLI users: see <a href="#cli">command-line install</a>.</p>
+      </div>
+
+      <!-- All Downloads -->
+      <div class="card span-12" id="all-downloads">
+        <h2>All downloads</h2>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+          <a class="btn success" href="installers/BloxdStudio-Setup-x64.exe" download>
+            Windows Installer <small>(.exe)</small>
+          </a>
+          <a class="btn success" href="installers/BloxdStudio-macOS-x64.dmg" download>
+            macOS <small>(.dmg)</small>
+          </a>
+          <a class="btn success" href="installers/BloxdStudio-linux-x86_64.AppImage" download>
+            Linux <small>(AppImage)</small>
+          </a>
+          <a class="btn success" href="installers/BloxdStudio-linux-amd64.deb" download>
+            Linux <small>(.deb)</small>
+          </a>
+          <a class="btn" href="installers/RELEASE-NOTES.md">Release notes</a>
+          <a class="btn" href="installers/checksums.txt">Checksums</a>
+        </div>
+        <p class="note" style="margin-top:10px">If a link returns 404, ensure the file names exist in <code>/installers</code> or update the paths.</p>
+      </div>
+
+      <!-- Installation Guides -->
+      <div class="card span-6">
+        <h3>Windows</h3>
+        <ul class="list">
+          <li>Double‑click <code>BloxdStudio-Setup-x64.exe</code>.</li>
+          <li>Approve the SmartScreen prompt (Publisher: you/your org).</li>
+          <li>After install, launch from Start Menu → <em>BloxdStudio</em>.</li>
+        </ul>
+        <div class="hr"></div>
+        <h3>macOS</h3>
+        <ul class="list">
+          <li>Open <code>BloxdStudio-macOS-x64.dmg</code> and drag the app into <strong>Applications</strong>.</li>
+          <li>If Gatekeeper blocks it, right‑click → <strong>Open</strong> → <em>Open anyway</em>.</li>
+        </ul>
+        <div class="hr"></div>
+        <h3>Linux</h3>
+        <ul class="list">
+          <li><strong>AppImage:</strong> <code>chmod +x BloxdStudio-linux-x86_64.AppImage && ./BloxdStudio-linux-x86_64.AppImage</code></li>
+          <li><strong>Debian/Ubuntu:</strong> <code>sudo apt install ./BloxdStudio-linux-amd64.deb</code></li>
+        </ul>
+      </div>
+
+      <!-- Verify & CLI -->
+      <div class="card span-6" id="cli">
+        <h3>Verify download (SHA256)</h3>
+        <p>Compare the hash below with <a href="installers/checksums.txt">checksums.txt</a>:</p>
+        <pre class="monos">
+# Windows (PowerShell)
+Get-FileHash .\BloxdStudio-Setup-x64.exe -Algorithm SHA256
+
+# macOS / Linux
+shasum -a 256 BloxdStudio-macOS-x64.dmg
+sha256sum BloxdStudio-linux-x86_64.AppImage
+        </pre>
+        <div class="hr"></div>
+        <h3>Command-line install (examples)</h3>
+        <pre class="monos">
+# Windows (PowerShell)
+Invoke-WebRequest -Uri https://your.domain/installers/BloxdStudio-Setup-x64.exe -OutFile BloxdStudio.exe
+Start-Process .\BloxdStudio.exe
+
+# macOS
+curl -LO https://your.domain/installers/BloxdStudio-macOS-x64.dmg
+open BloxdStudio-macOS-x64.dmg
+
+# Linux (AppImage)
+curl -LO https://your.domain/installers/BloxdStudio-linux-x86_64.AppImage
+chmod +x BloxdStudio-linux-x86_64.AppImage && ./BloxdStudio-linux-x86_64.AppImage
+        </pre>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="card span-12">
+        <h2>Troubleshooting</h2>
+        <ul class="list">
+          <li><strong>Windows SmartScreen:</strong> click <em>More info</em> → <em>Run anyway</em> (while unsigned).</li>
+          <li><strong>macOS “can’t be opened”:</strong> right‑click the app → <em>Open</em> once to whitelist.</li>
+          <li><strong>Linux missing deps (deb):</strong> run <code>sudo apt -f install</code> to resolve.</li>
+        </ul>
+        <p class="note">For issues, open a GitHub issue with your OS, app version, and logs.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    BloxdStudio • © <span id="year"></span> • <a href="./LICENSE">License</a>
+  </footer>
+
+  <script>
+    // --- Configuration: change these to match your files ---
+    const DOWNLOADS = {
+      windows: {
+        href: "installers/BloxdStudio-Setup-x64.exe",
+        label: "Download for Windows (.exe)",
+        sha: "pending"
+      },
+      mac: {
+        href: "installers/BloxdStudio-macOS-x64.dmg",
+        label: "Download for macOS (.dmg)",
+        sha: "pending"
+      },
+      linux: {
+        href: "installers/BloxdStudio-linux-x86_64.AppImage",
+        label: "Download for Linux (AppImage)",
+        sha: "pending"
+      }
+    };
+    const VERSION = "v0.1.0";
+    const RELEASED = "2026-02-24";
+    // Optional: if you host checksums.txt, fetch and inject the sha automatically
+    const CHECKSUMS_TXT = "installers/checksums.txt";
+
+    // --- Simple OS detection ---
+    function detectOS(){
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.includes("windows")) return "windows";
+      if (ua.includes("mac os x") || ua.includes("macintosh")) return "mac";
+      if (ua.includes("linux")) return "linux";
+      return null;
+    }
+
+    function badgeActive(os){
+      document.querySelectorAll("#osBadges .os").forEach(el=>{
+        el.classList.toggle("active", el.dataset.os===os);
+      });
+    }
+
+    async function loadChecksums(){
+      try{
+        const res = await fetch(CHECKSUMS_TXT, {cache:"no-store"});
+        if(!res.ok) return;
+        const text = await res.text();
+        // Expecting lines like: SHA256 (BloxdStudio-Setup-x64.exe) = abc123...
+        const parseSha = (filename) => {
+          const lines = text.split(/\r?\n/);
+          for (const ln of lines){
+            if (ln.toLowerCase().includes(filename.toLowerCase())){
+              const m = ln.match(/([A-Fa-f0-9]{64})/);
+              if (m) return m[1];
+            }
+          }
+          return null;
+        };
+        for (const [k,v] of Object.entries(DOWNLOADS)){
+          const fname = v.href.split("/").pop();
+          const sha = parseSha(fname);
+          if (sha) v.sha = sha;
         }
-    </script>
+        updateSmartSha();
+      }catch(e){
+        // ignore network errors for local file usage
+      }
+    }
+
+    function updateSmartSha(){
+      const shaEl = document.getElementById("sha");
+      const os = currentOS || "windows";
+      shaEl.textContent = DOWNLOADS[os]?.sha || "not available";
+    }
+
+    // --- Init ---
+    const currentOS = detectOS();
+    const smartBtn = document.getElementById("smartBtn");
+    const smartLabel = document.getElementById("smartBtnLabel");
+    const smartText = document.getElementById("smartText");
+    const yearEl = document.getElementById("year");
+    const versionEl = document.getElementById("version");
+    const releasedEl = document.getElementById("released");
+
+    yearEl.textContent = new Date().getFullYear();
+    versionEl.textContent = VERSION;
+    releasedEl.textContent = RELEASED;
+
+    if(currentOS && DOWNLOADS[currentOS]){
+      badgeActive(currentOS);
+      smartBtn.href = DOWNLOADS[currentOS].href;
+      smartLabel.textContent = DOWNLOADS[currentOS].label;
+      smartText.textContent = "We detected " + (currentOS === "mac" ? "macOS" : currentOS[0].toUpperCase()+currentOS.slice(1)) + ".";
+    } else {
+      smartBtn.href = DOWNLOADS.windows.href;
+      smartLabel.textContent = "Download for Windows (.exe)";
+      smartText.textContent = "We couldn't detect your OS. Pick one below.";
+    }
+
+    updateSmartSha();
+    loadChecksums();
+  </script>
 </body>
 </html>
