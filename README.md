@@ -17,7 +17,8 @@
 You only need a modern web browser (Chrome, Firefox, or Edge recommended).
 
 ### Usage
-1. Visit the [Live Demo](https://isiguzoflorence521-gif.github.io).
+1. Visit the [Live Demo](https://isiguzoflorence521-gif.github.io/BloxdStudio/
+).
 2. Use the **Build** tab to start placing blocks.
 3. Export your work via the **File** menu to save your `.bloxdschem` file.
 
